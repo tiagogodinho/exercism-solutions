@@ -5,7 +5,7 @@ class Matrix
   end
 
   def rows
-    string.split("\n").map { |row| row.split(' ').map(&:to_i) }
+    string.each_line.map { |row| row.split(' ').map(&:to_i) }
   end
 
   def columns
