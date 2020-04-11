@@ -1,15 +1,15 @@
 class Squares
-  attr_reader :range_of_numbers
+  attr_reader :number
   def initialize(number)
-    @range_of_numbers = 1..number
+    @number = number
   end
 
   def square_of_sum
-    range_of_numbers.sum ** 2
+    ((number + 1) * number / 2) ** 2
   end
 
   def sum_of_squares
-    range_of_numbers.map { |value| value ** 2 }.sum
+    (number * (number + 1) * (2 * number + 1)) / 6
   end
 
   def difference
