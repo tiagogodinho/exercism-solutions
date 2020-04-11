@@ -5,17 +5,10 @@ class Matrix
   end
 
   def rows
-    string.each_line.map { |row| row.split(' ').map(&:to_i) }
+    string.each_line.map { |row| row.split.map(&:to_i) }
   end
 
   def columns
-    number_of_columns = rows[0].length
-    number_of_rows = rows.length
-
-    number_of_columns.times.map do |j|
-      number_of_rows.times.map do |i|
-        rows[i][j]
-      end
-    end
+    rows.transpose
   end
 end
