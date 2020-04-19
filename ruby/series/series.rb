@@ -7,10 +7,6 @@ class Series
   def slices(size)
     raise ArgumentError if size > input.length
 
-    limit = input.length - size
-
-    (0..limit).map do |value|
-      input.slice(value, size)
-    end
+    input.chars.each_cons(size).map(&:join)
   end
 end
