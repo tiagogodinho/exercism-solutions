@@ -6,38 +6,17 @@ class Matrix
   end
 
   def saddle_points
-    rows_indexes & columns_indexes
+    rows.each_with_index.with_object([]) do |(row, i), result|
+      greatest_row_element = row.max
+
+      row.each_with_index do |value, j|
+        result.push([i, j]) if value == greatest_row_element &&
+                               value == columns[j].min
+      end
+    end
   end
 
   private
-
-  def rows_indexes
-    indexes = []
-
-    rows.each_with_index do |row, i|
-      greatest = row.max
-
-      row.each_with_index do |value, j|
-        indexes.push([i, j]) if value == greatest
-      end
-    end
-
-    indexes
-  end
-
-  def columns_indexes
-    indexes = []
-
-    columns.each_with_index do |column, i|
-      lowest = column.min
-
-      column.each_with_index do |value, j|
-        indexes.push([j, i]) if value == lowest
-      end
-    end
-
-    indexes
-  end
 
   def extract_rows(input)
     input.each_line.map do |row|
