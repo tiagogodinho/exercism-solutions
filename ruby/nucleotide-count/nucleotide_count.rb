@@ -1,6 +1,6 @@
 class Nucleotide
   def self.from_dna(strand)
-    raise ArgumentError if !strand.empty? && !strand.match?(/^[AGCT]+$/)
+    raise ArgumentError if strand.match?(/[^AGCT]/)
     new(strand)
   end
 
